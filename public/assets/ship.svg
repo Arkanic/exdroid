@@ -1,14 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="64" width="64" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 64.000001 64.000001">
- <defs id="defs4">
-  <filter id="filter4138" style="color-interpolation-filters:sRGB" height="1.238" width="1.2421" y="-.11898" x="-.12103">
-   <feGaussianBlur id="feGaussianBlur4140" stdDeviation="2.925003"/>
+<svg width="64.000001" height="64.000001" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <filter color-interpolation-filters="sRGB" x="-0.12103" y="-0.11898" width="1.2421" height="1.238" id="filter4138">
+   <feGaussianBlur stdDeviation="2.925003" id="feGaussianBlur4140"/>
   </filter>
  </defs>
- <g id="layer1" transform="translate(0 -988.36)">
-  <g id="g4142" stroke-linejoin="round" transform="matrix(.95 0 0 .95 1.6 50.993)" stroke="#fff">
-   <path id="path4155" d="m3 1049.4 29-59 29 59-29-18z" fill-rule="evenodd" stroke-width="2" fill="#fff"/>
-   <path id="path4136" d="m3 1049.4 29-59 29 59-29-18z" filter="url(#filter4138)" stroke-width="4" fill="none"/>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g transform="rotate(90 32.00000000000001,31.538040161132816) " id="layer1">
+   <g stroke="#fff" transform="matrix(0.95,0,0,0.95,1.6,50.993) " stroke-linejoin="round" id="g4142">
+    <path fill="#fff" stroke-width="2" fill-rule="evenodd" d="m3,9.021094l29,-59l29,59l-29,-18l-29,18z" id="path4155"/>
+    <path fill="none" stroke-width="4" filter="url(#filter4138)" d="m3,9.021094l29,-59l29,59l-29,-18l-29,18z" id="path4136"/>
+   </g>
   </g>
  </g>
 </svg>

@@ -52,7 +52,7 @@ export function getCurrentState() {
         return gameUpdates[gameUpdates.length - 1];
     } else {
         const baseUpdate = gameUpdates[base];
-        const next = gameUpdate[base + 1];
+        const next = gameUpdates[base + 1];
         const ratio = (serverTime - baseUpdate.t) / (next.t - baseUpdate.t);
         return {
             me: interpolateObject(baseUpdate.me, next.me, ratio),

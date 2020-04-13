@@ -3,13 +3,13 @@ class Object {
         this.id = id;
         this.x = x;
         this.y = y;
-        this.direction = direction;
+        this.direction = dir;
         this.speed = speed;
     }
 
     update(dt) {
-        this.x += dt * this.speed * Math.sin(this.direction);
-        this.y += dt * this.speed * Math.cos(this.direction);
+        this.x += dt * this.speed * Math.cos(this.direction);
+        this.y += dt * this.speed * Math.sin(this.direction);
     }
 
     distanceTo(object) {

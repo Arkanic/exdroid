@@ -6,7 +6,7 @@ class Game {
     constructor() {
         this.sockets = {};
         this.players = {};
-        this.bullets = {};
+        this.bullets = [];
         this.lastUpdateTime = Date.now();
         this.shouldSendUpdate = false;
         setInterval(this.update.bind(this), 1000/60);
@@ -82,7 +82,7 @@ class Game {
         }
     }
 
-    getLeaderBoard() {
+    getLeaderboard() {
         return Object.values(this.players)
             .sort((p1, p2) => p2.score - p1.score)
             .slice(0, 5)

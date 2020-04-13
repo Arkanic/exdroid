@@ -10,7 +10,7 @@ function onTouchInput(e) {
 }
 
 function handleInput(x, y) {
-    const dir = Math.atan2(x - window.innerWidth / 2, window.innerHeight / 2 - y);
+    const dir = Math.atan2(y - window.innerHeight / 2, x - window.innerWidth / 2);
     updateDirection(dir);
 }
 
