@@ -18,9 +18,11 @@ class Game {
         const x = constants.MAP_SIZE * (0.25 + Math.random() * 0.5);
         const y = constants.MAP_SIZE * (0.25 + Math.random() * 0.5);
         this.players[socket.id] = new Player(socket.id, username, x, y);
+        console.log(`Player Join (${username}) [${socket.id}]`);
     }
 
     removePlayer(socket) {
+        console.log(`Player leave (${this.players[socket.id].username}) [${socket.id}]`);
         delete this.sockets[socket.id];
         delete this.players[socket.id];
     }

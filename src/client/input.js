@@ -1,4 +1,4 @@
-import {updateDirection} from "./networking";
+import {updateState} from "./networking";
 
 function onMouseInput(e) {
     handleInput(e.clientX, e.clientY);
@@ -11,7 +11,7 @@ function onTouchInput(e) {
 
 function handleInput(x, y) {
     const dir = Math.atan2(y - window.innerHeight / 2, x - window.innerWidth / 2);
-    updateDirection(dir);
+    updateState(dir);
 }
 
 export function startCapturingInput() {
@@ -23,7 +23,7 @@ export function startCapturingInput() {
 
 export function stopCapturingInput() {
     window.removeEventListener("mousemove", onMouseInput);
-    window.removeEventListener("click", onMOuseInput);
+    window.removeEventListener("click", onMouseInput);
     window.removeEventListener("touchstart", onTouchInput);
     window.removeEventListener("touchmove", onTOuchInput);
 }

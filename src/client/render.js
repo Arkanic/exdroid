@@ -85,14 +85,18 @@ function renderPlayer(me, player) {
 }
 
 function renderBullet(me, bullet) {
-    const {x, y} = bullet;
+    const {x, y, direction} = bullet;
+    context.save();
+    context.translate(canvas.width / 2 + x - me.x, canvas.height / 2 + y - me.y);
+    context.rotate(direction);
     context.drawImage(
         getAsset("bullet.svg"),
-        canvas.width / 2 + x - me.x - BULLET_RADIUS,
-        canvas.height / 2 + y - me.y - BULLET_RADIUS,
+        -BULLET_RADIUS,
+        -BULLET_RADIUS,
         BULLET_RADIUS * 2,
         BULLET_RADIUS * 2
     );
+    context.restore();
 }
 
 function renderMainMenu() {
