@@ -5,9 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.prod.js",
+    "build": "webpack --config webpack.prod.js --progress",
     "start": "cross-env NODE_ENV=production node server.js",
-    "dev": "cross-env NODE_ENV=development node server.js",
+    "dev": "cross-env NODE_ENV=development node server.js --progress",
     "quick": "npm run build && npm run start"
   },
   "repository": {
@@ -30,13 +30,13 @@
     "socket.io-client": "^2.3.0",
     "throttle-debounce": "^2.1.0",
     "webpack": "^4.42.1",
+    "cross-env": "^7.0.2",
     "webpack-dev-middleware": "^3.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "babel-loader": "^8.1.0",
-    "cross-env": "^7.0.2",
     "css-loader": "^3.5.2",
     "mini-css-extract-plugin": "^0.9.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
