@@ -11,7 +11,7 @@ function onTouchInput(e) {
 
 function handleInput(x, y) {
     const dir = Math.atan2(y - window.innerHeight / 2, x - window.innerWidth / 2);
-    updateState(dir);
+    updateState({dir:dir});
 }
 
 export function startCapturingInput() {
