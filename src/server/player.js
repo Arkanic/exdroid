@@ -9,6 +9,7 @@ class Player extends ObjectClass {
         this.hp = constants.PLAYER_MAX_HP;
         this.fireCooldown = 0;
         this.score = 0;
+        this.isFiring = false;
     }
 
     update(dt) {
@@ -17,9 +18,10 @@ class Player extends ObjectClass {
         
         this.x = Math.max(0, Math.min(constants.MAP_SIZE, this.x));
         this.y = Math.max(0, Math.min(constants.MAP_SIZE, this.y));
-
-        this.fireCooldown -= dt;
-        if(this.fireCooldown <= 0) {
+        
+        if(this.fireCooldown > 0) {
+            this.fireCooldown -= dt;
+        } else if(this.isFiring) {
             this.fireCooldown += constants.PLAYER_FIRE_COOLDOWN;
             return new Bullet(this.id, this.x, this.y, this.direction);
         }

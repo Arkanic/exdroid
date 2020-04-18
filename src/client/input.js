@@ -1,29 +1,20 @@
 import {updateState} from "./networking";
-
+let mouseDown = false;
 function onMouseInput(e) {
-    handleInput(e.clientX, e.clientY);
+    handleInput(e.clientX, e.clientY, mouseDown);
 }
-
-function onTouchInput(e) {
-    const touch = e.touches[0];
-    handleInput(touch.clientX, touch.clientY);
-}
-
-function handleInput(x, y) {
+function handleInput(x, y, isFiring) {
     const dir = Math.atan2(y - window.innerHeight / 2, x - window.innerWidth / 2);
-    updateState({dir:dir});
+    updateState({dir:dir, isFiring:isFiring});
 }
-
 export function startCapturingInput() {
     window.addEventListener("mousemove", onMouseInput);
-    window.addEventListener("click", onMouseInput);
-    window.addEventListener("touchstart", onTouchInput);
-    window.addEventListener("touchmove", onTouchInput);
+    window.addEventListener("mousedown", (e)=>{mouseDown=true; onMouseInput(e)});
+    window.addEventListener("mouseup", (e)=>{mouseDown=false; onMouseInput(e)});
 }
 
 export function stopCapturingInput() {
-    window.removeEventListener("mousemove", onMouseInput);
-    window.removeEventListener("click", onMouseInput);
-    window.removeEventListener("touchstart", onTouchInput);
-    window.removeEventListener("touchmove", onTOuchInput);
+    window.removeEventListener("mousemove");
+    window.removeEventListener("mousedown");
+    window.removeEventListener("mouseup");
 }

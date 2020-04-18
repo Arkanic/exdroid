@@ -30,6 +30,7 @@ class Game {
     handleInput(socket, state) {
         if(this.players[socket.id]) {
             this.players[socket.id].setDirection(state.dir);
+            this.players[socket.id].isFiring = state.isFiring;
         }
     }
 
