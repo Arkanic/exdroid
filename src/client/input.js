@@ -14,7 +14,7 @@ export function startCapturingInput() {
 }
 
 export function stopCapturingInput() {
-    window.removeEventListener("mousemove");
-    window.removeEventListener("mousedown");
-    window.removeEventListener("mouseup");
+    window.removeEventListener("mousemove", onMouseInput);
+    window.removeEventListener("mousedown", (e)=>{mouseDown=true; onMouseInput(e)});
+    window.removeEventListener("mouseup", (e)=>{mouseDown=false; onMouseInput(e)});
 }

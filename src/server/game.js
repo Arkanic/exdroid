@@ -22,7 +22,7 @@ class Game {
     }
 
     removePlayer(socket) {
-        console.log(`Player leave (${this.players[socket.id].username}) [${socket.id}]`);
+        console.log(`Player leave [${socket.id}]`);
         delete this.sockets[socket.id];
         delete this.players[socket.id];
     }

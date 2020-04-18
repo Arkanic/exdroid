@@ -7,6 +7,7 @@ class Player extends ObjectClass {
         super(id, x, y, Math.random() * 2 * Math.PI, constants.PLAYER_SPEED);
         this.username = username;
         this.hp = constants.PLAYER_MAX_HP;
+        console.log(this.hp);
         this.fireCooldown = 0;
         this.score = 0;
         this.isFiring = false;
@@ -30,7 +31,7 @@ class Player extends ObjectClass {
     }
 
     takeBulletDamage() {
-        this.hp -= constants.SCORE_BULLET_HIT;
+        this.hp -= constants.BULLET_DAMAGE;
     }
 
     onDealtDamage() {
@@ -41,7 +42,8 @@ class Player extends ObjectClass {
         return {
             ...(super.serializeForUpdate()),
             direction: this.direction,
-            hp: this.hp
+            hp: this.hp,
+            username: this.username
         };
     }
 }
