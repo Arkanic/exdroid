@@ -7,7 +7,6 @@ class Player extends ObjectClass {
         super(id, x, y, Math.random() * 2 * Math.PI, constants.PLAYER_SPEED);
         this.username = username;
         this.hp = constants.PLAYER_MAX_HP;
-        console.log(this.hp);
         this.fireCooldown = 0;
         this.score = 0;
         this.isFiring = false;
