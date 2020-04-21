@@ -49,9 +49,11 @@ class Game {
 
         Object.keys(this.sockets).forEach(playerID => {
             const player = this.players[playerID];
-            const newBullet = player.update(dt);
-            if(newBullet) {
-                this.bullets.push(newBullet);
+            const newBullets = player.update(dt);
+            if(newBullets) {
+                for(let i in newBullets) {
+                    this.bullets.push(newBullets[i]);
+                }
             }
         });
 

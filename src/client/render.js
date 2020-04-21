@@ -3,8 +3,10 @@ import {getAsset} from "./assets";
 import {getCurrentState} from "./state";
 
 const constants = require("../shared/constants");
+const weaponTypes = require("../../public/meta/weapons");
 
-const {PLAYER_RADIUS, PLAYER_MAX_HP, BULLET_RADIUS, MAP_SIZE} = constants;
+const {PLAYER_RADIUS, PLAYER_MAX_HP, MAP_SIZE} = constants;
+const BULLET_RADIUS = weaponTypes.shotgun.radius;
 
 const canvas = document.getElementById("game-canvas");
 const context = canvas.getContext("2d");

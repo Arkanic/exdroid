@@ -1,6 +1,7 @@
 const ObjectClass = require("./object");
 const Bullet = require("./bullet");
 const constants = require("../shared/constants");
+const weaponTypes = require("../shared/ctype/weapons");
 
 class Player extends ObjectClass {
     constructor(id, username, x, y) {
@@ -22,15 +23,16 @@ class Player extends ObjectClass {
         if(this.fireCooldown > 0) {
             this.fireCooldown -= dt;
         } else if(this.isFiring) {
-            this.fireCooldown += constants.PLAYER_FIRE_COOLDOWN;
-            return new Bullet(this.id, this.x, this.y, this.direction);
+            this.fireCooldown += weaponTypes.shotgun.meta.cooldown;
+            let bullets = weaponTypes.shotgun.fire(this.id, this.x, this.y, this.direction);
+            return bullets;
         }
 
         return null;
     }
 
     takeBulletDamage() {
-        this.hp -= constants.BULLET_DAMAGE;
+        this.hp -= weaponTypes.shotgun.meta.damage;
     }
 
     onDealtDamage() {
