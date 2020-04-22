@@ -7,6 +7,7 @@ class Bullet extends ObjectClass {
         super(shortid(), x, y, dir, meta.speed);
         this.parentID = parentID;
         this.lifetime = meta.lifetime;
+        this.radius = meta.radius;
     }
 
     update(dt) {
@@ -17,6 +18,13 @@ class Bullet extends ObjectClass {
         } else if(this.lifetime <= 0) {
             return true;
         }
+    }
+
+    serializeForUpdate() {
+        return {
+            ...(super.serializeForUpdate()),
+            radius: this.radius
+        };
     }
 }
 

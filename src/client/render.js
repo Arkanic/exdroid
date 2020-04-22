@@ -6,7 +6,6 @@ const constants = require("../shared/constants");
 const weaponTypes = require("../../public/meta/weapons");
 
 const {PLAYER_RADIUS, PLAYER_MAX_HP, MAP_SIZE} = constants;
-const BULLET_RADIUS = weaponTypes.shotgun.radius;
 
 const canvas = document.getElementById("game-canvas");
 const context = canvas.getContext("2d");
@@ -96,16 +95,16 @@ function renderPlayer(me, player) {
 }
 
 function renderBullet(me, bullet) {
-    const {x, y, direction} = bullet;
+    const {x, y, direction, radius} = bullet;
     context.save();
     context.translate(canvas.width / 2 + x - me.x, canvas.height / 2 + y - me.y);
     context.rotate(direction);
     context.drawImage(
         getAsset("bullet.svg"),
-        -BULLET_RADIUS,
-        -BULLET_RADIUS,
-        BULLET_RADIUS * 2,
-        BULLET_RADIUS * 2
+        -radius,
+        -radius,
+        radius * 2,
+        radius * 2
     );
     context.restore();
 }

@@ -11,6 +11,7 @@ class Player extends ObjectClass {
         this.fireCooldown = 0;
         this.score = 0;
         this.isFiring = false;
+        this.weapon = "rotary";
     }
 
     update(dt) {
@@ -21,10 +22,10 @@ class Player extends ObjectClass {
         this.y = Math.max(0, Math.min(constants.MAP_SIZE, this.y));
         
         if(this.fireCooldown > 0) {
-            this.fireCooldown -= dt;
+            this.fireCooldown -= dt*10;
         } else if(this.isFiring) {
-            this.fireCooldown += weaponTypes.shotgun.meta.cooldown;
-            let bullets = weaponTypes.shotgun.fire(this.id, this.x, this.y, this.direction);
+            this.fireCooldown += weaponTypes[this.weapon].meta.cooldown;
+            let bullets = weaponTypes[this.weapon].fire(this.id, this.x, this.y, this.direction);
             return bullets;
         }
 

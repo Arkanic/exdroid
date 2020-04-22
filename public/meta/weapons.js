@@ -1,1 +1,1 @@
-module.exports={"basic":{"radius":3,"speed":1600,"damage":10,"cooldown":0.25},"shotgun":{"radius":3,"speed":1600,"damage":10,"cooldown":0.5,"lifetime":0.5}}
+module.exports={"basic":{"radius":4,"speed":1600,"damage":20,"cooldown":2.5,"lifetime":6},"shotgun":{"radius":2,"speed":1600,"damage":10,"cooldown":5,"lifetime":0.5},"rotary":{"radius":3,"speed":1400,"damage":10,"cooldown":1,"lifetime":0.6}}
