@@ -26,7 +26,7 @@ const weapons = Object.freeze({
         meta: {
             radius: 2,
             speed: 1600,
-            damage: 10,
+            damage: 5,
             cooldown: 5,
             lifetime: 0.5
         }
@@ -38,9 +38,21 @@ const weapons = Object.freeze({
         meta: {
             radius: 3,
             speed: 1400,
-            damage: 10,
+            damage: 7,
             cooldown: 1,
             lifetime: 0.6
+        }
+    },
+    sniper: {
+        fire: (id, x, y, dir) => {
+            return [new Bullet(id, x, y, dir, weapons.sniper.meta)];
+        },
+        meta: {
+            radius: 5,
+            speed: 2400,
+            damage: 100,
+            cooldown: 7,
+            lifetime: 1
         }
     }
 });
