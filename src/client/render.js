@@ -50,7 +50,7 @@ function renderBackground(x, y) {
         MAP_SIZE / 2
     );
     backgroundGradient.addColorStop(0, "black");
-    backgroundGradient.addColorStop(1, "darkgray");
+    backgroundGradient.addColorStop(1, "gray");
     context.fillStyle = backgroundGradient;
     context.fillRect(0, 0, canvas.width, canvas.height);
 }
