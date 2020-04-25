@@ -10,12 +10,12 @@ const weapons = Object.freeze({
         meta: {
             radius: 4,
             speed: 1600,
-            damage: 20,
+            damage: 30,
             cooldown: 2.5,
             lifetime: 6
         }
     },
-    shotgun: { 
+    shotgun: {
         fire: (id, x, y, dir) => {
             let bullets = [];
             for(let i = 0; i < 5; i++) {
@@ -26,7 +26,7 @@ const weapons = Object.freeze({
         meta: {
             radius: 2,
             speed: 1600,
-            damage: 5,
+            damage: 15,
             cooldown: 5,
             lifetime: 0.5
         }

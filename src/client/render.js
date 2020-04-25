@@ -23,7 +23,7 @@ function setCanvasDimensions() {
 window.addEventListener("resize", debounce(40, setCanvasDimensions));
 
 function render() {
-    const {me, others, bullets} = getCurrentState();
+    const {me, others, bullets, obtainables} = getCurrentState();
     if(!me) return;
 
     renderBackground(me.x, me.y);
@@ -36,6 +36,8 @@ function render() {
 
     renderPlayer(me, me);
     others.forEach(renderPlayer.bind(null, me));
+
+    obtainables.forEach(renderObtainable.bind(null, me));
 }
 
 function renderBackground(x, y) {
@@ -101,6 +103,20 @@ function renderBullet(me, bullet) {
     context.rotate(direction);
     context.drawImage(
         getAsset("bullet.svg"),
+        -radius,
+        -radius,
+        radius * 2,
+        radius * 2
+    );
+    context.restore();
+}
+
+function renderObtainable(me, obtainable) {
+    const {x, y, direction, radius} = obtainable;
+    context.save();
+    context.translate(canvas.width / 2 + x - me.x, canvas.height / 2 + y - me.y);
+    context.drawImage(
+        getAsset("object.svg"),
         -radius,
         -radius,
         radius * 2,

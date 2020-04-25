@@ -8,6 +8,7 @@ class Bullet extends ObjectClass {
         this.parentID = parentID;
         this.lifetime = meta.lifetime;
         this.radius = meta.radius;
+        this.damage = meta.damage;
     }
 
     update(dt) {

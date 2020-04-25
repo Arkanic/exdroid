@@ -1,12 +1,14 @@
 const constants = require("../shared/constants");
 const Player = require("./player");
 const applyCollisions = require("./collisions");
+const Obtainable = require("./obtainable");
 
 class Game {
     constructor() {
         this.sockets = {};
         this.players = {};
         this.bullets = [];
+        this.obtainables = [new Obtainable(constants.MAP_SIZE/2, constants.MAP_SIZE/2, 0, {"hi":360})];
         this.lastUpdateTime = Date.now();
         this.shouldSendUpdate = false;
         setInterval(this.update.bind(this), 1000/60);
@@ -46,6 +48,10 @@ class Game {
             }
         });
         this.bullets = this.bullets.filter(bullet => !bulletsToRemove.includes(bullet));
+
+        this.obtainables.forEach(obtainable => {
+            obtainable.update(dt);
+        });
 
         Object.keys(this.sockets).forEach(playerID => {
             const player = this.players[playerID];
@@ -101,12 +107,16 @@ class Game {
         const nearbyBullets = this.bullets.filter(
             b => b.distanceTo(player) <= constants.MAP_SIZE / 2
         );
+        const nearbyObtainables = this.obtainables.filter(
+            o => o.distanceTo(player) <= constants.MAP_SIZE / 2
+        );
 
         return {
             t: Date.now(),
             me: player.serializeForUpdate(),
             others: nearbyPlayers.map(p => p.serializeForUpdate()),
             bullets: nearbyBullets.map(b => b.serializeForUpdate()),
+            obtainables: nearbyObtainables.map(o => o.serializeForUpdate()),
             leaderboard
         };
     }

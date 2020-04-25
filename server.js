@@ -19,12 +19,13 @@ if(process.env.NODE_ENV == "development") {
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port);
+console.log("Server Started.")
 
 const io = socketio(server);
-io.on("connection", socket => {
+io.on(constants.MSG_TYPES.CONNECTION, socket => {
     socket.on(constants.MSG_TYPES.JOIN_GAME, joinGame);
     socket.on(constants.MSG_TYPES.INPUT, handleInput);
-    socket.on("disconnect", onDisconnect);
+    socket.on(constants.MSG_TYPES.DISCONNECT, onDisconnect);
 });
 
 const game = new Game();

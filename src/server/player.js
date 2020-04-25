@@ -11,7 +11,7 @@ class Player extends ObjectClass {
         this.fireCooldown = 0;
         this.score = 0;
         this.isFiring = false;
-        this.weapon = "sniper";
+        this.weapon = "rotary";
     }
 
     update(dt) {
@@ -32,8 +32,8 @@ class Player extends ObjectClass {
         return null;
     }
 
-    takeBulletDamage() {
-        this.hp -= weaponTypes.shotgun.meta.damage;
+    takeBulletDamage(bullet) {
+        this.hp -= bullet.damage;
     }
 
     onDealtDamage() {
