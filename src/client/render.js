@@ -32,12 +32,12 @@ function render() {
     context.lineWidth = 1;
     context.strokeRect(canvas.width/2 - me.x, canvas.height/2 - me.y, MAP_SIZE, MAP_SIZE);
 
+    obtainables.forEach(renderObtainable.bind(null, me));
+
     bullets.forEach(renderBullet.bind(null, me));
 
     renderPlayer(me, me);
     others.forEach(renderPlayer.bind(null, me));
-
-    obtainables.forEach(renderObtainable.bind(null, me));
 }
 
 function renderBackground(x, y) {
