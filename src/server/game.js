@@ -8,7 +8,7 @@ class Game {
         this.sockets = {};
         this.players = {};
         this.bullets = [];
-        this.obtainables = [new Obtainable(constants.MAP_SIZE/2, constants.MAP_SIZE/2, 0, {"hi":360})];
+        this.obtainables = [new Obtainable(constants.MAP_SIZE/2, constants.MAP_SIZE/2, 0, {type:"weapon", content:"basic", amount:"1"})];
         this.lastUpdateTime = Date.now();
         this.shouldSendUpdate = false;
         setInterval(this.update.bind(this), 1000/60);

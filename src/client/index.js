@@ -1,9 +1,9 @@
-import {connect, play} from "./networking";
-import {startRendering, stopRendering} from "./render";
-import {startCapturingInput, stopCapturingInput} from "./input";
-import {downloadAssets} from "./assets";
-import {initState} from "./state";
-import {setLeaderboardHidden} from "./leaderboard";
+import {connect, play} from "./scripts/networking";
+import {startRendering, stopRendering} from "./scripts/render";
+import {startCapturingInput, stopCapturingInput} from "./scripts/input";
+import {downloadAssets} from "./scripts/assets";
+import {initState} from "./scripts/state";
+import {setLeaderboardHidden} from "./scripts/leaderboard";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/global.css";

@@ -2,8 +2,8 @@ import {debounce} from "throttle-debounce";
 import {getAsset} from "./assets";
 import {getCurrentState} from "./state";
 
-const constants = require("../shared/constants");
-const weaponTypes = require("../../public/meta/weapons");
+const constants = require("../../shared/constants");
+const weaponTypes = require("../../../public/meta/weapons");
 
 const {PLAYER_RADIUS, PLAYER_MAX_HP, MAP_SIZE} = constants;
 
