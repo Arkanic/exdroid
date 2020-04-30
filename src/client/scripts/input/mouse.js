@@ -1,38 +1,34 @@
-let mouse = {
-    down: false,
-    x: 0,
-    y: 0
-};
+import {updateMouseState} from "../networking";
+
+let mouseDown = false;
+
+function handleInput(x, y, isFiring) {
+    const dir = Math.atan2(y - window.innerHeight / 2, x - window.innerWidth / 2);
+    updateMouseState({dir:dir, isFiring:isFiring});
+}
 
 const eventRunner = {
-    runOnMouseMove: (e) => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
+    mousemove: (e) => {
+        handleInput(e.clientX, e.clientY, mouseDown);
     },
-    runOnMouseDown: (e) => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-        mouse.down = true;
+    mousedown: (e) => {
+        mouseDown = true;
+        handleInput(e.clientX, e.clientY, mouseDown);
     },
-    runOnMouseUp: (e) => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-        mouse.down = false;
+    mouseup: (e) => {
+        mouseDown = false;
+        handleInput(e.clientX, e.clientY, mouseDown);
     }
 };
 
-export function getMouseState() {
-    return mouse;
+export function startCapturingMouseInput() {
+    window.addEventListener("mousemove", eventRunner.mousemove);
+    window.addEventListener("mousedown", eventRunner.mousedown);
+    window.addEventListener("mouseup", eventRunner.mouseup);
 }
 
-export function startMouseInput() {
-    window.addEventListener("mousemove", eventRunner.runOnMouseMove);
-    window.addEventListener("mousedown", eventRunner.runOnMouseDown);
-    window.addEventListener("mouseup", eventRunner.runOnMouseUp);
-}
-
-export function stopMouseInput() {
-    window.addEventListener("mousemove", eventRunner.runOnMouseMove);
-    window.addEventListener("mousedown", eventRunner.runOnMouseDown);
-    window.addEventListener("mouseup", eventRunner.runOnMouseUp);
+export function stopCapturingMouseInput() {
+    window.removeEventListener("mousemove", eventRunner.mousemove);
+    window.removeEventListener("mousedown", eventRunner.mousedown);
+    window.removeEventListener("mouseup", eventRunner.mouseup);
 }

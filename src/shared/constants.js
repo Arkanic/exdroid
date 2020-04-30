@@ -8,10 +8,11 @@ module.exports = Object.freeze({
 
     MAP_SIZE: 4000,
     MSG_TYPES: {
-        JOIN_GAME: 'join_game',
-        GAME_UPDATE: 'update',
-        INPUT: 'input',
-        GAME_OVER: 'dead',
+        JOIN_GAME: "join_game",
+        GAME_UPDATE: "update",
+        INPUT_MOUSE: "inputMouse",
+        INPUT_KEYBOARD: "inputKeyboard",
+        GAME_OVER: "dead",
         CONNECTION: "connection",
         DISCONNECT: "disconnect"
     }

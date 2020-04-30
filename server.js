@@ -24,7 +24,7 @@ console.log("Server Started.")
 const io = socketio(server);
 io.on(constants.MSG_TYPES.CONNECTION, socket => {
     socket.on(constants.MSG_TYPES.JOIN_GAME, joinGame);
-    socket.on(constants.MSG_TYPES.INPUT, handleInput);
+    socket.on(constants.MSG_TYPES.INPUT_MOUSE, handleInput);
     socket.on(constants.MSG_TYPES.DISCONNECT, onDisconnect);
 });
 
