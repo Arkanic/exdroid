@@ -116,10 +116,17 @@ function renderObtainable(me, obtainable) {
     context.save();
     context.translate(canvas.width / 2 + x - me.x, canvas.height / 2 + y - me.y);
     context.drawImage(
-        getAsset("object.svg"),
+        getAsset("circle.svg"),
+        -radius*1.5,
+        -radius*1.5,
+        radius*3,
+        radius*3
+    );
+    context.drawImage(
+        getAsset("basic.svg"),
+        -radius*1.5,
         -radius,
-        -radius,
-        radius * 2,
+        radius * 3,
         radius * 2
     );
     context.restore();

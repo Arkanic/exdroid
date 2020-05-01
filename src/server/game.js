@@ -8,7 +8,7 @@ class Game {
         this.sockets = {};
         this.players = {};
         this.bullets = [];
-        this.obtainables = [new Obtainable(constants.MAP_SIZE/2, constants.MAP_SIZE/2, 0, {type:"weapon", content:"basic", amount:"1"})];
+        this.obtainables = [new Obtainable(Math.floor(Math.random()*constants.MAP_SIZE), Math.floor(Math.random()*constants.MAP_SIZE), 0, {type:"weapon", content:"basic", amount:"1"})];
         this.lastUpdateTime = Date.now();
         this.shouldSendUpdate = false;
         setInterval(this.update.bind(this), 1000/60);
@@ -86,7 +86,7 @@ class Game {
             }
             this.obtainables.forEach(obtainable => {
                 if(player.requestPickup) {
-                    if(player.distanceTo(obtainable) <= 32) {
+                    if(player.distanceTo(obtainable) <= 96) {
                         if(obtainable.content.type == "weapon") {
                             player.weapon = obtainable.content.content;
                         }
