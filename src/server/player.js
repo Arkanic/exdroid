@@ -12,6 +12,7 @@ class Player extends ObjectClass {
         this.score = 0;
         this.isFiring = false;
         this.weapon = "rotary";
+        this.requestPickup = false;
     }
 
     update(dt) {

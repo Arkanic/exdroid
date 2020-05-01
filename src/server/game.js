@@ -29,10 +29,16 @@ class Game {
         delete this.players[socket.id];
     }
 
-    handleInput(socket, state) {
+    handleMouseInput(socket, state) {
         if(this.players[socket.id]) {
             this.players[socket.id].setDirection(state.dir);
             this.players[socket.id].isFiring = state.isFiring;
+        }
+    }
+
+    handleKeyboardInput(socket, state) {
+        if(this.players[socket.id]) {
+            this.players[socket.id].requestPickup = state.f;
         }
     }
 
@@ -78,6 +84,15 @@ class Game {
                 socket.emit(constants.MSG_TYPES.GAME_OVER);
                 this.removePlayer(socket);
             }
+            this.obtainables.forEach(obtainable => {
+                if(player.requestPickup) {
+                    if(player.distanceTo(obtainable) <= 32) {
+                        if(obtainable.content.type == "weapon") {
+                            player.weapon = obtainable.content.content;
+                        }
+                    }
+                }
+            })
         });
 
         if(this.shouldSendUpdate) {

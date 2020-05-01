@@ -24,8 +24,9 @@ console.log("Server Started.")
 const io = socketio(server);
 io.on(constants.MSG_TYPES.CONNECTION, socket => {
     socket.on(constants.MSG_TYPES.JOIN_GAME, joinGame);
-    socket.on(constants.MSG_TYPES.INPUT_MOUSE, handleInput);
+    socket.on(constants.MSG_TYPES.INPUT_MOUSE, handleMouseInput);
     socket.on(constants.MSG_TYPES.DISCONNECT, onDisconnect);
+    socket.on(constants.MSG_TYPES.INPUT_KEYBOARD, handleKeyboardInput);
 });
 
 const game = new Game();
@@ -33,9 +34,12 @@ const game = new Game();
 function joinGame(username) {
     game.addPlayer(this, username);
 }
-function handleInput(dir) {
-    game.handleInput(this, dir);
+function handleMouseInput(dir) {
+    game.handleMouseInput(this, dir);
 }
 function onDisconnect() {
     game.removePlayer(this);
+}
+function handleKeyboardInput(keys) {
+    game.handleKeyboardInput(this, keys);
 }

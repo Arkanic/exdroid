@@ -25,10 +25,10 @@ export function startCapturingMouseInput() {
     window.addEventListener("mousemove", eventRunner.mousemove);
     window.addEventListener("mousedown", eventRunner.mousedown);
     window.addEventListener("mouseup", eventRunner.mouseup);
-}
+};
 
 export function stopCapturingMouseInput() {
     window.removeEventListener("mousemove", eventRunner.mousemove);
     window.removeEventListener("mousedown", eventRunner.mousedown);
     window.removeEventListener("mouseup", eventRunner.mouseup);
-}
+};
