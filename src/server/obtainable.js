@@ -6,7 +6,6 @@ class Obtainable extends ObjectClass {
     constructor(x, y, dir, content) {
         super(shortid(), x, y, dir, 0);
         this.content = content;
-        this.pickupCooldown = 0;
     }
 
     update(dt) {
@@ -16,21 +15,13 @@ class Obtainable extends ObjectClass {
         if(this.pickupCooldown > 0) this.pickupCooldown -= dt;
     }
 
-    pickup() {
-        if(this.pickupCooldown >= 0) {
-            this.pickupCooldown += 10;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     serializeForUpdate() {
         return {
             ...(super.serializeForUpdate()),
             content: this.content,
-            radius: 32
-        }
+            radius: 32,
+            pickupCooldown: this.pickupCooldown
+        };
     }
 }
 

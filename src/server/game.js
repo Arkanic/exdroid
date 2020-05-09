@@ -87,15 +87,15 @@ class Game {
             }
             this.obtainables.forEach(obtainable => {
                 if(player.requestPickup) {
-                    if(player.distanceTo(obtainable) <= 96) {
-                        if(obtainable.pickup()) {
-                            let tempWeapon = player.weapon;
-                            if(obtainable.content.type == "weapon") {
-                                player.weapon = obtainable.content.content;
-                            }
-                            obtainablesToRemove.push(obtainable);
-                            this.obtainables.push(new Obtainable(player.x, player.y, 0, {type:"weapon", content:tempWeapon}));
+                    if(player.distanceTo(obtainable) <= 128) {
+                        let temp;
+                        if(obtainable.content.type == "weapon") {
+                            temp = player.weapon;
+                            player.weapon = obtainable.content.content;
                         }
+                        obtainablesToRemove.push(obtainable);
+                        this.obtainables.push(new Obtainable(player.x, player.y, 0, {type:"weapon", content:temp}));
+                        player.requestPickup = false;
                     }
                 }
             });

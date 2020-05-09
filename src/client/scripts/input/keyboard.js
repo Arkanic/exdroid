@@ -1,7 +1,11 @@
 import {updateKeyboardState} from "../networking";
 
 let keys = {
-    f: false
+    f: false,
+    w: false,
+    a: false,
+    s: false,
+    d: false
 };
 
 function handleInput(keys) {
@@ -14,10 +18,42 @@ const eventRunner = {
             keys.f = true;
             handleInput(keys);
         }
+        if(e.keyCode == 87) {
+            keys.w = true;
+            handleInput(keys);
+        }
+        if(e.keyCode == 65) {
+            keys.a = true;
+            handleInput(keys);
+        }
+        if(e.keyCode == 83) {
+            keys.s = true;
+            handleInput(keys);
+        }
+        if(e.keyCode == 68) {
+            keys.d = true;
+            handleInput(keys);
+        }
     },
     keyup: (e) => {
         if(e.keyCode == 70) {
             keys.f = false;
+            handleInput(keys);
+        }
+        if(e.keyCode == 87) {
+            keys.w = false;
+            handleInput(keys);
+        }
+        if(e.keyCode == 65) {
+            keys.a = false;
+            handleInput(keys);
+        }
+        if(e.keyCode == 83) {
+            keys.s = false;
+            handleInput(keys);
+        }
+        if(e.keyCode == 68) {
+            keys.d = false;
             handleInput(keys);
         }
     }

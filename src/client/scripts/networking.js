@@ -35,6 +35,6 @@ export const updateMouseState = throttle(20, state => {
     socket.emit(constants.MSG_TYPES.INPUT_MOUSE, state);
 });
 
-export const updateKeyboardState = throttle(20, state => {
+export const updateKeyboardState = throttle(300, state => {
     socket.emit(constants.MSG_TYPES.INPUT_KEYBOARD, state);
 });
