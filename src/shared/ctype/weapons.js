@@ -12,7 +12,7 @@ const weapons = Object.freeze({
             speed: 1600,
             damage: 30,
             cooldown: 2.5,
-            lifetime: 6
+            lifetime: 0.6
         }
     },
     shotgun: {

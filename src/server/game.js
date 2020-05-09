@@ -76,7 +76,8 @@ class Game {
             }
         });
         this.bullets = this.bullets.filter(bullet => !destroyedBullets.includes(bullet));
-
+        
+        const obtainablesToRemove = [];
         Object.keys(this.sockets).forEach(playerID => {
             const socket = this.sockets[playerID];
             const player = this.players[playerID];
@@ -87,12 +88,18 @@ class Game {
             this.obtainables.forEach(obtainable => {
                 if(player.requestPickup) {
                     if(player.distanceTo(obtainable) <= 96) {
-                        if(obtainable.content.type == "weapon") {
-                            player.weapon = obtainable.content.content;
+                        if(obtainable.pickup()) {
+                            let tempWeapon = player.weapon;
+                            if(obtainable.content.type == "weapon") {
+                                player.weapon = obtainable.content.content;
+                            }
+                            obtainablesToRemove.push(obtainable);
+                            this.obtainables.push(new Obtainable(player.x, player.y, 0, {type:"weapon", content:tempWeapon}));
                         }
                     }
                 }
-            })
+            });
+            this.obtainables = this.obtainables.filter(obtainable => !obtainablesToRemove.includes(obtainable));
         });
 
         if(this.shouldSendUpdate) {
