@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node tools/generateWeaponMeta.js && webpack --config webpack.prod.js --progress",
+    "build": "node tools/generate.js && webpack --config webpack.prod.js --progress",
     "start": "cross-env NODE_ENV=production node server.js",
     "dev": "cross-env NODE_ENV=development node server.js --progress",
     "quick": "npm run build && npm run start"

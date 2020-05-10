@@ -3,8 +3,20 @@ const ASSET_NAMES = [
     "bullet.svg",
     "object.svg",
     "basic.svg",
-    "circle.svg"
+    "circle.svg",
+    "rotary.svg",
+    "shotgun.svg",
+    "sniper.svg",
+    "repeater.svg"
 ];
+
+export const CHECK_NAMES = {
+    rotary: "rotary.svg",
+    basic: "basic.svg",
+    shotgun: "circle.svg",
+    sniper: "circle.svg",
+    repeater: "circle.svg"
+}; //will autogenerate this soon
 
 const assets = {};
 const downloadPromise = Promise.all(ASSET_NAMES.map(downloadAsset));

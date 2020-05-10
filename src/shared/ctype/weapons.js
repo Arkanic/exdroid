@@ -9,9 +9,9 @@ const weapons = Object.freeze({
         },
         meta: {
             radius: 4,
-            speed: 1600,
+            speed: 2000,
             damage: 30,
-            cooldown: 2.5,
+            cooldown: 3,
             lifetime: 0.6
         }
     },
@@ -25,7 +25,7 @@ const weapons = Object.freeze({
         },
         meta: {
             radius: 2,
-            speed: 1600,
+            speed: 1000,
             damage: 15,
             cooldown: 5,
             lifetime: 0.5
@@ -40,7 +40,7 @@ const weapons = Object.freeze({
             speed: 1400,
             damage: 7,
             cooldown: 1,
-            lifetime: 0.6
+            lifetime: 2
         }
     },
     sniper: {
@@ -48,11 +48,23 @@ const weapons = Object.freeze({
             return [new Bullet(id, x, y, dir, weapons.sniper.meta)];
         },
         meta: {
-            radius: 5,
-            speed: 2400,
+            radius: 7,
+            speed: 2500,
             damage: 100,
             cooldown: 7,
             lifetime: 1
+        }
+    },
+    repeater: {
+        fire: (id, x, y, dir) => {
+            return [new Bullet(id, x, y, dir, weapons.repeater.meta)];
+        },
+        meta: {
+            radius: 4,
+            speed: 2000,
+            damage: 25,
+            cooldown: 4,
+            lifetime: 3
         }
     }
 });

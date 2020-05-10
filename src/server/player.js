@@ -46,7 +46,8 @@ class Player extends ObjectClass {
             ...(super.serializeForUpdate()),
             direction: this.direction,
             hp: this.hp,
-            username: this.username
+            username: this.username,
+            weapon: this.weapon
         };
     }
 }

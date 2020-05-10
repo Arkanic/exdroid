@@ -3,12 +3,14 @@ const Player = require("./player");
 const applyCollisions = require("./collisions");
 const Obtainable = require("./obtainable");
 
+const generateLoot = require("./loot.js");
+
 class Game {
     constructor() {
         this.sockets = {};
         this.players = {};
         this.bullets = [];
-        this.obtainables = [new Obtainable(Math.floor(Math.random()*constants.MAP_SIZE), Math.floor(Math.random()*constants.MAP_SIZE), 0, {type:"weapon", content:"basic", amount:"1"})];
+        this.obtainables = generateLoot();
         this.lastUpdateTime = Date.now();
         this.shouldSendUpdate = false;
         setInterval(this.update.bind(this), 1000/60);

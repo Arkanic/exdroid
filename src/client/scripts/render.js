@@ -1,5 +1,5 @@
 import {debounce} from "throttle-debounce";
-import {getAsset} from "./assets";
+import {getAsset, CHECK_NAMES} from "./assets";
 import {getCurrentState} from "./state";
 
 const constants = require("../../shared/constants");
@@ -58,7 +58,7 @@ function renderBackground(x, y) {
 }
 
 function renderPlayer(me, player) {
-    const {x, y, direction} = player;
+    const {x, y, direction, weapon} = player;
     const canvasX = canvas.width / 2 + x - me.x;
     const canvasY = canvas.height / 2 + y - me.y;
 
@@ -94,6 +94,7 @@ function renderPlayer(me, player) {
     }
     context.fillStyle = "white";
     context.fillText(pUsername.substr(0, pUsername.length - 3), canvasX, canvasY + PLAYER_RADIUS + 24);
+    context.fillText(weapon.substr(0, weapon.length - 3), canvasX, canvasY + PLAYER_RADIUS + 33);
 }
 
 function renderBullet(me, bullet) {
@@ -112,7 +113,7 @@ function renderBullet(me, bullet) {
 }
 
 function renderObtainable(me, obtainable) {
-    const {x, y, direction, radius} = obtainable;
+    const {x, y, direction, radius, content} = obtainable;
     context.save();
     context.translate(canvas.width / 2 + x - me.x, canvas.height / 2 + y - me.y);
     context.drawImage(
@@ -122,8 +123,12 @@ function renderObtainable(me, obtainable) {
         radius*3,
         radius*3
     );
+    let image = getAsset("circle.svg");
+    if(content.content != undefined) {
+        image = getAsset(content.content + ".svg");
+    }
     context.drawImage(
-        getAsset("basic.svg"),
+        image,
         -radius*1.5,
         -radius,
         radius * 3,
