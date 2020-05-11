@@ -94,10 +94,14 @@ class Game {
                         if(obtainable.content.type == "weapon") {
                             temp = player.weapon;
                             player.weapon = obtainable.content.content;
+                            obtainablesToRemove.push(obtainable);
+                            this.obtainables.push(new Obtainable(player.x, player.y, 0, {type:"weapon", content:temp}));
+                            player.requestPickup = false;
+                        } else if(obtainable.content.type == "ammunition") {
+                            player.ammunition[obtainable.content.content] += obtainable.content.amount;
+                            obtainablesToRemove.push(obtainable);
+                            player.requestPickup = false;
                         }
-                        obtainablesToRemove.push(obtainable);
-                        this.obtainables.push(new Obtainable(player.x, player.y, 0, {type:"weapon", content:temp}));
-                        player.requestPickup = false;
                     }
                 }
             });

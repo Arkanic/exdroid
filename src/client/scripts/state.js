@@ -1,4 +1,5 @@
 import {updateLeaderboard} from "./leaderboard";
+import {updateAmmunition} from "./hud";
 
 const RENDER_DELAY = 100;
 
@@ -19,6 +20,8 @@ export function processGameUpdate(update) {
     gameUpdates.push(update);
 
     updateLeaderboard(update.leaderboard);
+    updateAmmunition(update.me);
+
 
     const base = getBaseUpdate();
     if(base > 0) {

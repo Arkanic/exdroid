@@ -4,6 +4,7 @@ import {getCurrentState} from "./state";
 
 const constants = require("../../shared/constants");
 const weaponTypes = require("../../../public/meta/weapons");
+const ammunitionTypes = require("../../../public/meta/ammunition");
 
 const {PLAYER_RADIUS, PLAYER_MAX_HP, MAP_SIZE} = constants;
 
@@ -136,7 +137,14 @@ function renderObtainable(me, obtainable) {
             radius * 2
         );
     } else if(obtainable.content.type == "ammunition") {
-        
+        let radius = 32;
+        context.fillStyle = "blue";//ammunitionTypes[obtainable.content.content];
+        context.fillRect(
+            -radius,
+            -radius,
+            radius*2,
+            radius*2
+        );
     }
     context.restore();
 }

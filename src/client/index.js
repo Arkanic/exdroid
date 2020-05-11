@@ -4,6 +4,7 @@ import {startCapturingInput, stopCapturingInput} from "./scripts/input";
 import {downloadAssets} from "./scripts/assets";
 import {initState} from "./scripts/state";
 import {setLeaderboardHidden} from "./scripts/leaderboard";
+import {setAmmunitionHidden} from "./scripts/hud";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/global.css";
@@ -25,6 +26,7 @@ Promise.all([
         startCapturingInput();
         startRendering();
         setLeaderboardHidden(false);
+        setAmmunitionHidden(false);
     };
 }).catch(console.error);
 
@@ -33,4 +35,5 @@ function onGameOver() {
     stopRendering();
     playMenu.classList.remove("hidden");
     setLeaderboardHidden(true);
+    setAmmunitionHidden(true);
 }

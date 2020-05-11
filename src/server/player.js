@@ -13,6 +13,7 @@ class Player extends ObjectClass {
         this.isFiring = false;
         this.weapon = "rotary";
         this.requestPickup = false;
+        this.ammunition = {"T108":20};
     }
 
     update(dt) {
@@ -24,9 +25,10 @@ class Player extends ObjectClass {
         
         if(this.fireCooldown > 0) {
             this.fireCooldown -= dt*10;
-        } else if(this.isFiring) {
+        } else if(this.isFiring && this.ammunition[weaponTypes[this.weapon].meta.ammunition] >= 1) {
             this.fireCooldown += weaponTypes[this.weapon].meta.cooldown;
             let bullets = weaponTypes[this.weapon].fire(this.id, this.x, this.y, this.direction);
+            this.ammunition[weaponTypes[this.weapon].meta.ammunition] -= 1;
             return bullets;
         }
 
@@ -50,7 +52,8 @@ class Player extends ObjectClass {
             direction: this.direction,
             hp: this.hp,
             username: this.username,
-            weapon: this.weapon
+            weapon: this.weapon,
+            ammunition: this.ammunition
         };
     }
 }

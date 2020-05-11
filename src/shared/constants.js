@@ -6,7 +6,7 @@ module.exports = Object.freeze({
     SCORE_BULLET_HIT: 200,
     SCORE_PER_SECOND: 10,
 
-    MAP_SIZE: 4000,
+    MAP_SIZE: 10000,
     MSG_TYPES: {
         JOIN_GAME: "join_game",
         GAME_UPDATE: "update",

@@ -1,3 +1,11 @@
+* {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -70,6 +78,25 @@ button:focus {
     outline: none;
 }
 
+#ammunition {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#ammunition th {
+    text-align: center;
+    padding: 2px 5px;
+}
+
+#ammunition td {
+    text-align: center;
+    padding: 2px 5px;
+}
+
 #leaderboard {
     position: fixed;
     top: 10px;
@@ -108,6 +135,8 @@ button:focus {
     border-radius: 5px;
     text-align: center;
 }
+
+th.count {}
 
 @media screen and (max-width: 640px) {
     h1 {
