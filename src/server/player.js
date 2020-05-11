@@ -33,8 +33,11 @@ class Player extends ObjectClass {
         return null;
     }
 
-    takeBulletDamage(bullet) {
+    takeBulletDamage(bullet, players) {
         this.hp -= bullet.damage;
+        if(this.hp <= 0) {
+            console.log(`${bullet.parentID} > ${this.id}`);
+        }
     }
 
     onDealtDamage() {

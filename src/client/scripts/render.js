@@ -51,8 +51,8 @@ function renderBackground(x, y) {
         backgroundY,
         MAP_SIZE / 2
     );
-    backgroundGradient.addColorStop(0, "black");
-    backgroundGradient.addColorStop(1, "gray");
+    backgroundGradient.addColorStop(0, "#145A32");
+    backgroundGradient.addColorStop(1, "#1E8449");
     context.fillStyle = backgroundGradient;
     context.fillRect(0, 0, canvas.width, canvas.height);
 }
@@ -116,24 +116,28 @@ function renderObtainable(me, obtainable) {
     const {x, y, direction, radius, content} = obtainable;
     context.save();
     context.translate(canvas.width / 2 + x - me.x, canvas.height / 2 + y - me.y);
-    context.drawImage(
-        getAsset("circle.svg"),
-        -radius*1.5,
-        -radius*1.5,
-        radius*3,
-        radius*3
-    );
-    let image = getAsset("circle.svg");
-    if(content.content != undefined) {
-        image = getAsset(content.content + ".svg");
+    if(obtainable.content.type == "weapon") {
+        context.drawImage(
+            getAsset("circle.svg"),
+            -radius*1.5,
+            -radius*1.5,
+            radius*3,
+            radius*3
+        );
+        let image = getAsset("circle.svg");
+        if(content.content != undefined) {
+            image = getAsset(content.content + ".svg");
+        }
+        context.drawImage(
+            image,
+            -radius*1.5,
+            -radius,
+            radius * 3,
+            radius * 2
+        );
+    } else if(obtainable.content.type == "ammunition") {
+        
     }
-    context.drawImage(
-        image,
-        -radius*1.5,
-        -radius,
-        radius * 3,
-        radius * 2
-    );
     context.restore();
 }
 
