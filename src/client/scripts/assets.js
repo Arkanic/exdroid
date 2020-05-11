@@ -10,14 +10,6 @@ const ASSET_NAMES = [
     "repeater.svg"
 ];
 
-export const CHECK_NAMES = {
-    rotary: "rotary.svg",
-    basic: "basic.svg",
-    shotgun: "circle.svg",
-    sniper: "circle.svg",
-    repeater: "circle.svg"
-}; //will autogenerate this soon
-
 const assets = {};
 const downloadPromise = Promise.all(ASSET_NAMES.map(downloadAsset));
 

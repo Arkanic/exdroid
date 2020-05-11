@@ -18,17 +18,17 @@ const weapons = Object.freeze({
     shotgun: {
         fire: (id, x, y, dir) => {
             let bullets = [];
-            for(let i = 0; i < 5; i++) {
-                bullets.push(new Bullet(id, x, y, dir + (Math.PI / 180)*(Math.random()*8-4), weapons.shotgun.meta))
+            for(let i = 0; i < 10; i++) {
+                bullets.push(new Bullet(id, x+Math.floor(Math.random() * 16)-8, y+Math.floor(Math.random() * 16)-8, dir + (Math.PI / 180)*(Math.random()*6-3), weapons.shotgun.meta))
             }
             return bullets;
         },
         meta: {
             radius: 2,
-            speed: 1000,
-            damage: 15,
+            speed: 2400,
+            damage: 6,
             cooldown: 5,
-            lifetime: 0.5
+            lifetime: 0.3
         }
     },
     rotary: {

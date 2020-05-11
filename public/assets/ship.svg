@@ -1,7 +1,6 @@
 <svg width="64.000001" height="64.000001" xmlns="http://www.w3.org/2000/svg">
  <defs>
   <filter color-interpolation-filters="sRGB" x="-0.12103" y="-0.11898" width="1.2421" height="1.238" id="filter4138">
-   <feGaussianBlur stdDeviation="2.925003" id="feGaussianBlur4140"/>
   </filter>
  </defs>
  <g>
