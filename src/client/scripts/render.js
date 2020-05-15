@@ -94,8 +94,8 @@ function renderPlayer(me, player) {
         pUsername = player.username;
     }
     context.fillStyle = "white";
-    context.fillText(pUsername.substr(0, pUsername.length - 3), canvasX, canvasY + PLAYER_RADIUS + 24);
-    context.fillText(weapon.substr(0, weapon.length - 3), canvasX, canvasY + PLAYER_RADIUS + 33);
+    context.fillText(pUsername, canvasX, canvasY + PLAYER_RADIUS + 24);
+    context.fillText(weapon, canvasX, canvasY + PLAYER_RADIUS + 33);
 }
 
 function renderBullet(me, bullet) {
@@ -137,7 +137,7 @@ function renderObtainable(me, obtainable) {
             radius * 2
         );
     } else if(obtainable.content.type == "ammunition") {
-        let radius = 32;
+        let radius = 16;
         context.fillStyle = "blue";//ammunitionTypes[obtainable.content.content];
         context.fillRect(
             -radius,

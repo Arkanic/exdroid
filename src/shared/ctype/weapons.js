@@ -13,7 +13,8 @@ const weapons = Object.freeze({
             damage: 30,
             cooldown: 3,
             lifetime: 0.6,
-            ammunition: "AP102"
+            ammunition: "AP102",
+            sammo: 30
         }
     },
     shotgun: {
@@ -30,7 +31,8 @@ const weapons = Object.freeze({
             damage: 6,
             cooldown: 5,
             lifetime: 0.3,
-            ammunition: "B89" 
+            ammunition: "B89",
+            sammo: 15
         }
     },
     rotary: {
@@ -43,7 +45,8 @@ const weapons = Object.freeze({
             damage: 7,
             cooldown: 1,
             lifetime: 2,
-            ammunition: "T108"
+            ammunition: "T108",
+            sammo: 75
         }
     },
     sniper: {
@@ -56,7 +59,8 @@ const weapons = Object.freeze({
             damage: 100,
             cooldown: 7,
             lifetime: 1,
-            ammunition: "T108"
+            ammunition: "T108",
+            sammo: 20
         }
     },
     repeater: {
@@ -69,7 +73,8 @@ const weapons = Object.freeze({
             damage: 25,
             cooldown: 4,
             lifetime: 3,
-            ammunition: "AP102"
+            ammunition: "AP102",
+            sammo: 60
         }
     }
 });

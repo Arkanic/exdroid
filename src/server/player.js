@@ -11,9 +11,9 @@ class Player extends ObjectClass {
         this.fireCooldown = 0;
         this.score = 0;
         this.isFiring = false;
-        this.weapon = "rotary";
+        this.weapon = "basic";
         this.requestPickup = false;
-        this.ammunition = {"T108":20};
+        this.ammunition = {"T108":0,"AP102":0,"B89":0};
     }
 
     update(dt) {
