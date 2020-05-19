@@ -1,0 +1,1 @@
+import {getCurrentState} from "./state";

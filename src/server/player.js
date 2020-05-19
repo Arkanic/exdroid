@@ -53,7 +53,7 @@ class Player extends ObjectClass {
             hp: this.hp,
             username: this.username,
             weapon: this.weapon,
-            ammunition: this.ammunition
+            ammunition: this.ammunition,
         };
     }
 }
