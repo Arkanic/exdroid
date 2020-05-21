@@ -85,6 +85,12 @@ class Game {
             const player = this.players[playerID];
             if(player.hp <= 0) {
                 socket.emit(constants.MSG_TYPES.GAME_OVER);
+                for(let i in player.ammunition) {
+                    if(player.ammunition[i] > 0) {
+                        this.obtainables.push(new Obtainable(player.x + Math.random()*200-100, player.y + Math.random()*200-100, 0, {type:"ammunition", content:i, amount:player.ammunition[i]}));
+                    }
+                }
+                this.obtainables.push(new Obtainable(player.x + Math.random()*200-100, player.y + Math.random()*200-100, 0, {type:"weapon", content:player.weapon}));
                 this.removePlayer(socket);
             }
             this.obtainables.forEach(obtainable => {

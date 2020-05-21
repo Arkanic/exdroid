@@ -52,8 +52,8 @@ function renderBackground(x, y) {
         backgroundY,
         MAP_SIZE / 2
     );
-    backgroundGradient.addColorStop(0, "#145A32");
-    backgroundGradient.addColorStop(1, "#1E8449");
+    backgroundGradient.addColorStop(0, "darkgreen");
+    backgroundGradient.addColorStop(1, "darkgreen");
     context.fillStyle = backgroundGradient;
     context.fillRect(0, 0, canvas.width, canvas.height);
 }
@@ -138,7 +138,8 @@ function renderObtainable(me, obtainable) {
         );
     } else if(obtainable.content.type == "ammunition") {
         let radius = 16;
-        context.fillStyle = "blue";//ammunitionTypes[obtainable.content.content];
+        context.fillStyle = ammunitionTypes[obtainable.content.content].colour;
+        console.log(ammunitionTypes[obtainable.content.content].colour);
         context.fillRect(
             -radius,
             -radius,

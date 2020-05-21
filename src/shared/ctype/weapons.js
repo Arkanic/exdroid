@@ -76,7 +76,7 @@ const weapons = Object.freeze({
             ammunition: "AP102",
             sammo: 60
         }
-    }
+    },
 });
 
 module.exports = weapons;
