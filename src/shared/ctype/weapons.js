@@ -20,7 +20,7 @@ const weapons = Object.freeze({
     shotgun: {
         fire: (id, x, y, dir) => {
             let bullets = [];
-            for(let i = 0; i < 10; i++) {
+            for(let i = 0; i < 50; i++) {
                 bullets.push(new Bullet(id, x+Math.floor(Math.random() * 16)-8, y+Math.floor(Math.random() * 16)-8, dir + (Math.PI / 180)*(Math.random()*6-3), weapons.shotgun.meta))
             }
             return bullets;
@@ -29,7 +29,7 @@ const weapons = Object.freeze({
             radius: 2,
             speed: 2400,
             damage: 6,
-            cooldown: 5,
+            cooldown: 0,
             lifetime: 0.3,
             ammunition: "B89",
             sammo: 15
@@ -69,12 +69,12 @@ const weapons = Object.freeze({
         },
         meta: {
             radius: 4,
-            speed: 2000,
-            damage: 25,
-            cooldown: 4,
-            lifetime: 3,
+            speed: 2500,
+            damage: 30,
+            cooldown: 3,
+            lifetime: 2,
             ammunition: "AP102",
-            sammo: 60
+            sammo: 50
         }
     },
 });

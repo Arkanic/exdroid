@@ -90,7 +90,9 @@ class Game {
                         this.obtainables.push(new Obtainable(player.x + Math.random()*200-100, player.y + Math.random()*200-100, 0, {type:"ammunition", content:i, amount:player.ammunition[i]}));
                     }
                 }
-                this.obtainables.push(new Obtainable(player.x + Math.random()*200-100, player.y + Math.random()*200-100, 0, {type:"weapon", content:player.weapon}));
+                if(player.weapon != "basic") {
+                    this.obtainables.push(new Obtainable(player.x + Math.random()*200-100, player.y + Math.random()*200-100, 0, {type:"weapon", content:player.weapon}));
+                }
                 this.removePlayer(socket);
             }
             this.obtainables.forEach(obtainable => {
@@ -105,6 +107,10 @@ class Game {
                             player.requestPickup = false;
                         } else if(obtainable.content.type == "ammunition") {
                             player.ammunition[obtainable.content.content] += obtainable.content.amount;
+                            obtainablesToRemove.push(obtainable);
+                            player.requestPickup = false;
+                        } else if(obtainable.content.type == "consumable") {
+                            player.hp += 50;
                             obtainablesToRemove.push(obtainable);
                             player.requestPickup = false;
                         }
