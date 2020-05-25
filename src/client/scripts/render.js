@@ -155,7 +155,12 @@ function renderObtainable(me, obtainable) {
             radius*2
         );
         context.fillStyle = "red";
-        context.f
+        context.fillRect(
+            -radius/2,
+            -radius/2,
+            radius,
+            radius
+        );
     }
     context.restore();
 }
