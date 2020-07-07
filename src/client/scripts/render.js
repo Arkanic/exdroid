@@ -29,9 +29,18 @@ function render() {
 
     renderBackground(me.x, me.y);
 
-    context.strokeStyle = "black";
+    /*const backgroundGradient = context.createRadialGradient(
+        -canvas.width/2,
+        -canvas.height/2,
+        MAP_SIZE/2,
+        MAP_SIZE/2
+    );
+    backgroundGradient.addColorStop(0, "darkgray");
+    backgroundGradient.addColorStop(1, "black");*/
+
+    context.fillStyle = "darkgray";
     context.lineWidth = 1;
-    context.strokeRect(canvas.width/2 - me.x, canvas.height/2 - me.y, MAP_SIZE, MAP_SIZE);
+    context.fillRect(canvas.width/2 - me.x, canvas.height/2 - me.y, MAP_SIZE, MAP_SIZE);
 
     obtainables.forEach(renderObtainable.bind(null, me));
 
@@ -44,7 +53,7 @@ function render() {
 function renderBackground(x, y) {
     const backgroundX = MAP_SIZE / 2 - x + canvas.width / 2;
     const backgroundY = MAP_SIZE / 2 - y + canvas.height / 2;
-    const backgroundGradient = context.createRadialGradient(
+    /*const backgroundGradient = context.createRadialGradient(
         backgroundX,
         backgroundY,
         MAP_SIZE / 10,
@@ -52,9 +61,12 @@ function renderBackground(x, y) {
         backgroundY,
         MAP_SIZE / 2
     );
-    backgroundGradient.addColorStop(0, "darkgreen");
-    backgroundGradient.addColorStop(1, "darkgreen");
-    context.fillStyle = backgroundGradient;
+    backgroundGradient.addColorStop(0, "black");
+    backgroundGradient.addColorStop(1, "black");
+    */
+    const image = getAsset("space.jpg");
+    const ptrn = context.createPattern(image, "repeat");
+    context.fillStyle = ptrn;
     context.fillRect(0, 0, canvas.width, canvas.height);
 }
 

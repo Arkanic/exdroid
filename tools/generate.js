@@ -29,3 +29,4 @@ fs.writeFile(__dirname + "/../public/meta/ammunition.js", exportAmmunitionString
     if(err) throw err;
     console.log("Generated ammunition.");
 });
+

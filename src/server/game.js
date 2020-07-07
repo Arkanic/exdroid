@@ -13,7 +13,7 @@ class Game {
         this.obtainables = generateLoot();
         this.lastUpdateTime = Date.now();
         this.shouldSendUpdate = false;
-        setInterval(this.update.bind(this), 1000/60);
+        setInterval(this.update.bind(this), 1000/100);
     }
 
     addPlayer(socket, username) {
