@@ -111,9 +111,20 @@ function renderPlayer(me, player) {
 }
 
 function renderBullet(me, bullet) {
-    const {x, y, direction, radius} = bullet;
+    const {x, y, px, py, direction, radius} = bullet;
     context.save();
     context.translate(canvas.width / 2 + x - me.x, canvas.height / 2 + y - me.y);
+    context.rotate(direction);
+    context.drawImage(
+        getAsset("bob.svg"),
+        -radius,
+        -radius,
+        radius * 2,
+        radius * 2
+    );
+    context.restore();
+    context.save();
+    context.translate(canvas.width / 2 + px - me.x, canvas.height / 2 + py - me.y);
     context.rotate(direction);
     context.drawImage(
         getAsset("bullet.svg"),

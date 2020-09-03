@@ -21,5 +21,10 @@ module.exports = () => {
             loot.push(new Obtainable(x, y, 0, {type:"ammunition", content:i, amount:50}));
         }
     }
+    for(let j = 0; j < constants.MAP_SIZE/1000; j++) {
+        let x = Math.floor(Math.random() * constants.MAP_SIZE);
+        let y = Math.floor(Math.random() * constants.MAP_SIZE);
+        loot.push(new Obtainable(x, y, 0, {type:"consumable"}));
+    }
     return loot;
 }

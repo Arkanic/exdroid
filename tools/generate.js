@@ -30,3 +30,17 @@ fs.writeFile(__dirname + "/../public/meta/ammunition.js", exportAmmunitionString
     console.log("Generated ammunition.");
 });
 
+let exportFiles = [];
+fs.readdir("./public/assets/images/", (err, files) => {
+    if(err) throw err;
+    files.forEach(file => {
+        exportFiles.push(file);
+    });
+    let exportAssetNamesString = "module.exports=";
+    exportAssetNamesString += JSON.stringify(exportFiles);
+    exportAssetNamesString = new Uint8Array(Buffer.from(exportAssetNamesString));
+    fs.writeFile(__dirname + "/../public/meta/assetnames.js", exportAssetNamesString, (err) => {
+        if(err) throw err;
+        console.log("Generated asset names");
+    });
+});

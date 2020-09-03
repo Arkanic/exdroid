@@ -1,15 +1,5 @@
-const ASSET_NAMES = [
-    "ship.svg",
-    "bullet.svg",
-    "object.svg",
-    "basic.svg",
-    "circle.svg",
-    "rotary.svg",
-    "shotgun.svg",
-    "sniper.svg",
-    "repeater.svg",
-    "space.jpg"
-];
+const ASSET_NAMES = require("../../../public/meta/assetnames");
+
 
 const assets = {};
 const downloadPromise = Promise.all(ASSET_NAMES.map(downloadAsset));
@@ -27,4 +17,4 @@ function downloadAsset(assetName) {
 }
 
 export const downloadAssets = () => downloadPromise;
-export const getAsset = assetName => assets[assetName];
+export const getAsset = assetName => assets[assetName] || assets["circle.svg"];

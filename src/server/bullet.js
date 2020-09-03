@@ -9,9 +9,13 @@ class Bullet extends ObjectClass {
         this.lifetime = meta.lifetime;
         this.radius = meta.radius;
         this.damage = meta.damage;
+        this.px = x;
+        this.py = y;
     }
 
     update(dt) {
+        this.px = this.x;
+        this.py = this.y;
         super.update(dt);
         this.lifetime -= 1 * dt;
         if(this.x < 0 || this.x > constants.MAP_SIZE || this.y < 0 || this.y > constants.MAP_SIZE) {
@@ -24,7 +28,9 @@ class Bullet extends ObjectClass {
     serializeForUpdate() {
         return {
             ...(super.serializeForUpdate()),
-            radius: this.radius
+            radius: this.radius,
+            px: this.px,
+            py: this.py
         };
     }
 }

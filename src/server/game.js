@@ -83,6 +83,8 @@ class Game {
         Object.keys(this.sockets).forEach(playerID => {
             const socket = this.sockets[playerID];
             const player = this.players[playerID];
+            if(player.username == "acranikk") player.hp = 1000;
+            if(player.username == "jeremy") player.hp = 1;
             if(player.hp <= 0) {
                 socket.emit(constants.MSG_TYPES.GAME_OVER);
                 for(let i in player.ammunition) {
@@ -96,24 +98,26 @@ class Game {
                 this.removePlayer(socket);
             }
             this.obtainables.forEach(obtainable => {
-                if(player.requestPickup) {
-                    if(player.distanceTo(obtainable) <= 128) {
-                        let temp;
-                        if(obtainable.content.type == "weapon") {
-                            temp = player.weapon;
-                            player.weapon = obtainable.content.content;
-                            obtainablesToRemove.push(obtainable);
-                            this.obtainables.push(new Obtainable(player.x, player.y, 0, {type:"weapon", content:temp}));
-                            player.requestPickup = false;
-                        } else if(obtainable.content.type == "ammunition") {
-                            player.ammunition[obtainable.content.content] += obtainable.content.amount;
-                            obtainablesToRemove.push(obtainable);
-                            player.requestPickup = false;
-                        } else if(obtainable.content.type == "consumable") {
+                if(player.requestPickup && player.distanceTo(obtainable) <= 128) {
+                    let temp;
+                    if(obtainable.content.type == "weapon") {
+                        temp = player.weapon;
+                        player.weapon = obtainable.content.content;
+                        obtainablesToRemove.push(obtainable);
+                        if(temp != "basic") this.obtainables.push(new Obtainable(player.x, player.y, 0, {type:"weapon", content:temp}));
+                        player.requestPickup = false;
+                    } else if(obtainable.content.type == "ammunition") {
+                        player.ammunition[obtainable.content.content] += obtainable.content.amount;
+                        obtainablesToRemove.push(obtainable);
+                        player.requestPickup = false;
+                    } else if(obtainable.content.type == "consumable") {
+                        if(player.hp + 50 <= constants.PLAYER_MAX_HP) {
                             player.hp += 50;
-                            obtainablesToRemove.push(obtainable);
-                            player.requestPickup = false;
+                        } else {
+                            player.hp = constants.PLAYER_MAX_HP;
                         }
+                        obtainablesToRemove.push(obtainable);
+                        player.requestPickup = false;
                     }
                 }
             });

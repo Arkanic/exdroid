@@ -31,7 +31,6 @@ class Player extends ObjectClass {
             this.ammunition[weaponTypes[this.weapon].meta.ammunition] -= 1;
             return bullets;
         }
-
         return null;
     }
 
