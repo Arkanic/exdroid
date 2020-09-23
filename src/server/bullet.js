@@ -25,9 +25,9 @@ class Bullet extends ObjectClass {
         }
     }
 
-    serializeForUpdate() {
+    serialize() {
         return {
-            ...(super.serializeForUpdate()),
+            ...(super.serialize()),
             radius: this.radius,
             px: this.px,
             py: this.py

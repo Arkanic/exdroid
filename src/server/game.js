@@ -157,10 +157,10 @@ class Game {
 
         return {
             t: Date.now(),
-            me: player.serializeForUpdate(),
-            others: nearbyPlayers.map(p => p.serializeForUpdate()),
-            bullets: nearbyBullets.map(b => b.serializeForUpdate()),
-            obtainables: nearbyObtainables.map(o => o.serializeForUpdate()),
+            me: player.serialize(),
+            others: nearbyPlayers.map(p => p.serialize()),
+            bullets: nearbyBullets.map(b => b.serialize()),
+            obtainables: nearbyObtainables.map(o => o.serialize()),
             leaderboard
         };
     }

@@ -8,11 +8,13 @@ class Player extends ObjectClass {
         super(id, x, y, Math.random() * 2 * Math.PI, constants.PLAYER_SPEED);
         this.username = username;
         this.hp = constants.PLAYER_MAX_HP;
+
         this.fireCooldown = 0;
         this.score = 0;
         this.isFiring = false;
-        this.weapon = "basic";
         this.requestPickup = false;
+
+        this.weapon = "basic";
         this.ammunition = {"T108":0,"AP102":0,"B89":0};
     }
 
@@ -45,9 +47,9 @@ class Player extends ObjectClass {
         this.score += constants.SCORE_BULLET_HIT;
     }
 
-    serializeForUpdate() {
+    serialize() {
         return {
-            ...(super.serializeForUpdate()),
+            ...(super.serialize()),
             direction: this.direction,
             hp: this.hp,
             username: this.username,

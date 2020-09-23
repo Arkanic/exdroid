@@ -22,7 +22,7 @@ class Object {
         this.direction = dir;
     }
 
-    serializeForUpdate() {
+    serialize() {
         return {
             id: this.id,
             x: this.x,

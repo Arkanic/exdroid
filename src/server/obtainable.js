@@ -15,9 +15,9 @@ class Obtainable extends ObjectClass {
         if(this.pickupCooldown > 0) this.pickupCooldown -= dt;
     }
 
-    serializeForUpdate() {
+    serialize() {
         return {
-            ...(super.serializeForUpdate()),
+            ...(super.serialize()),
             content: this.content,
             radius: 32,
             pickupCooldown: this.pickupCooldown

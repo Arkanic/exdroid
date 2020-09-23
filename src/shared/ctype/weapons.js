@@ -40,11 +40,11 @@ const weapons = Object.freeze({
             return [new Bullet(id, x, y, dir + (Math.PI / 180)*(Math.random()*4-2), weapons.rotary.meta)];
         },
         meta: {
-            radius: 3,
-            speed: 1400,
-            damage: 7,
+            radius: 250,
+            speed: 0,
+            damage: 50,
             cooldown: 1,
-            lifetime: 2,
+            lifetime: 50,
             ammunition: "T108",
             sammo: 75
         }
