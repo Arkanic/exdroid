@@ -40,9 +40,9 @@ const weapons = Object.freeze({
             return [new Bullet(id, x, y, dir + (Math.PI / 180)*(Math.random()*4-2), weapons.rotary.meta)];
         },
         meta: {
-            radius: 250,
-            speed: 0,
-            damage: 50,
+            radius: 3,
+            speed: 2400,
+            damage: 15,
             cooldown: 1,
             lifetime: 50,
             ammunition: "T108",
@@ -65,7 +65,9 @@ const weapons = Object.freeze({
     },
     repeater: {
         fire: (id, x, y, dir) => {
-            return [new Bullet(id, x, y, dir, weapons.repeater.meta)];
+            return [
+                new Bullet(id, x, y, dir+(Math.PI / 180)*(Math.random()*4-2), weapons.repeater.meta)
+            ];
         },
         meta: {
             radius: 4,
