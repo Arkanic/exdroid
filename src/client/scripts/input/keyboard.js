@@ -9,7 +9,7 @@ let keys = {
 };
 
 function handleInput(keys) {
-    updateKeyboardState({f:keys.f});
+    updateKeyboardState(...(keys));
 }
 
 const eventRunner = {

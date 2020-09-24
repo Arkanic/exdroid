@@ -116,7 +116,7 @@ function renderBullet(me, bullet) {
     context.translate(canvas.width / 2 + x - me.x, canvas.height / 2 + y - me.y);
     context.rotate(direction);
     context.drawImage(
-        getAsset("bob.svg"),
+        getAsset("bullet.svg"),
         -radius,
         -radius,
         radius * 2,
