@@ -148,12 +148,8 @@ function renderObtainable(me, obtainable) {
             radius*3,
             radius*3
         );
-        let image = getAsset("circle.svg");
-        if(content.content != undefined) {
-            image = getAsset(content.content + ".svg");
-        }
         context.drawImage(
-            image,
+            getAsset(`${content.content}.svg`),
             -radius*1.5,
             -radius,
             radius * 3,

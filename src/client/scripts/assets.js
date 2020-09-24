@@ -17,4 +17,4 @@ function downloadAsset(assetName) {
 }
 
 export const downloadAssets = () => downloadPromise;
-export const getAsset = assetName => assets[assetName] || assets["circle.svg"];
+export const getAsset = assetName => assets[assetName] || assets["error.svg"];
