@@ -14,7 +14,8 @@ const weapons = Object.freeze({
             cooldown: 3,
             lifetime: 0.6,
             ammunition: "AP102",
-            sammo: 30
+            sammo: 30,
+            reductcount: 1
         }
     },
     shotgun: {
@@ -32,7 +33,8 @@ const weapons = Object.freeze({
             cooldown: 10,
             lifetime: 0.3,
             ammunition: "B89",
-            sammo: 15
+            sammo: 15,
+            reductcount: 1
         }
     },
     rotary: {
@@ -46,7 +48,8 @@ const weapons = Object.freeze({
             cooldown: 1,
             lifetime: 50,
             ammunition: "T108",
-            sammo: 75
+            sammo: 75,
+            reductcount: 1
         }
     },
     sniper: {
@@ -60,12 +63,14 @@ const weapons = Object.freeze({
             cooldown: 7,
             lifetime: 1,
             ammunition: "T108",
-            sammo: 20
+            sammo: 20,
+            reductcount: 1
         }
     },
     repeater: {
         fire: (id, x, y, dir) => {
             return [
+                new Bullet(id, x, y, dir+(Math.PI / 180)*(Math.random()*4-2), weapons.repeater.meta),
                 new Bullet(id, x, y, dir+(Math.PI / 180)*(Math.random()*4-2), weapons.repeater.meta)
             ];
         },
@@ -76,7 +81,8 @@ const weapons = Object.freeze({
             cooldown: 3,
             lifetime: 2,
             ammunition: "AP102",
-            sammo: 50
+            sammo: 50,
+            reductcount: 2
         }
     },
 });

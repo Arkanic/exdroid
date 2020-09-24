@@ -3,6 +3,8 @@ const Player = require("./player");
 const applyCollisions = require("./collisions");
 const Obtainable = require("./obtainable");
 
+const weapons = require("../shared/ctype/weapons");
+
 const generateLoot = require("./loot.js");
 
 class Game {
