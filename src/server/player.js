@@ -27,7 +27,7 @@ class Player extends ObjectClass {
         
         if(this.fireCooldown > 0) {
             this.fireCooldown -= dt*10;
-        } else if(this.isFiring && this.ammunition[weaponTypes[this.weapon].meta.ammunition] >= 1) {
+        } else if(this.isFiring && this.ammunition[weaponTypes[this.weapon].meta.ammunition] >= weaponTypes[this.weapon].meta.reductcount) {
             this.fireCooldown += weaponTypes[this.weapon].meta.cooldown;
             let bullets = weaponTypes[this.weapon].fire(this.id, this.x, this.y, this.direction);
             this.ammunition[weaponTypes[this.weapon].meta.ammunition] -= weaponTypes[this.weapon].meta.reductcount;
