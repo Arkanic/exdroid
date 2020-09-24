@@ -161,28 +161,20 @@ function renderObtainable(me, obtainable) {
         );
     } else if(obtainable.content.type == "ammunition") {
         let radius = 16;
-        context.fillStyle = ammunitionTypes[obtainable.content.content].colour;
-        context.fillRect(
+        context.drawImage(
+            getAsset(`ammo-${ammunitionTypes[obtainable.content.content].colour}.svg`),
             -radius,
             -radius,
             radius*2,
             radius*2
         );
     } else if(obtainable.content.type == "consumable") {
-        let radius = 16;
-        context.fillStyle = "white";
-        context.fillRect(
+        context.drawImage(
+            getAsset("healthpack.svg"),
             -radius,
             -radius,
             radius*2,
             radius*2
-        );
-        context.fillStyle = "red";
-        context.fillRect(
-            -radius/2,
-            -radius/2,
-            radius,
-            radius
         );
     }
     context.restore();

@@ -1,1 +1,1 @@
-module.exports={"AP102":{"name":"AP 20x102mm","colour":"#F1C40F"},"T108":{"name":"12.7x108mm T","colour":"#1F618D"},"B89":{"name":"BS 89mm","colour":"#A93226"}}
+module.exports={"AP102":{"name":"AP 20x102mm","colour":"y"},"T108":{"name":"12.7x108mm T","colour":"b"},"B89":{"name":"BS 89mm","colour":"r"}}

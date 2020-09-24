@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
@@ -10,6 +11,11 @@ module.exports = {
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
+  },
+  optimization: {
+      splitChunks: {
+          chunks: "all",
+      }
   },
   module: {
     rules: [
@@ -42,6 +48,7 @@ module.exports = {
       filename: 'index.html',
       template: 'src/client/html/index.html',
     }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new webpack.HashedModuleIdsPlugin()
   ],
 };
