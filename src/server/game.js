@@ -85,8 +85,6 @@ class Game {
         Object.keys(this.sockets).forEach(playerID => {
             const socket = this.sockets[playerID];
             const player = this.players[playerID];
-            if(player.username == "acranikk") player.hp = 1000;
-            if(player.username == "jeremy") player.hp = 1;
             if(player.hp <= 0) {
                 socket.emit(constants.MSG_TYPES.GAME_OVER);
                 for(let i in player.ammunition) {

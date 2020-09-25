@@ -45,7 +45,7 @@ const weapons = Object.freeze({
             radius: 3,
             speed: 2400,
             damage: 15,
-            cooldown: 1,
+            cooldown: 0.25,
             lifetime: 50,
             ammunition: "T108",
             sammo: 75,

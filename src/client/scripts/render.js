@@ -123,17 +123,6 @@ function renderBullet(me, bullet) {
         radius * 2
     );
     context.restore();
-    context.save();
-    context.translate(canvas.width / 2 + px - me.x, canvas.height / 2 + py - me.y);
-    context.rotate(direction);
-    context.drawImage(
-        getAsset("bullet.svg"),
-        -radius,
-        -radius,
-        radius * 2,
-        radius * 2
-    );
-    context.restore();
 }
 
 function renderObtainable(me, obtainable) {
