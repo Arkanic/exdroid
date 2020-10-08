@@ -17,7 +17,7 @@ if(process.env.NODE_ENV == "development") {
     app.use(express.static("dist"));
 }
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 8080;
 const server = app.listen(port);
 console.log("Server Started.")
 

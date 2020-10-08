@@ -87,9 +87,9 @@ class Game {
             const player = this.players[playerID];
             if(player.hp <= 0) {
                 socket.emit(constants.MSG_TYPES.GAME_OVER);
-                for(let i in player.ammunition) {
-                    if(player.ammunition[i] > 0) {
-                        this.obtainables.push(new Obtainable(player.x + Math.random()*200-100, player.y + Math.random()*200-100, 0, {type:"ammunition", content:i, amount:player.ammunition[i]}));
+                for(let i in player.ammunition.magazine) {
+                    if(player.ammunition.magazine[i] > 0) {
+                        this.obtainables.push(new Obtainable(player.x + Math.random()*200-100, player.y + Math.random()*200-100, 0, {type:"ammunition", content:i, amount:player.ammunition.magazine[i]}));
                     }
                 }
                 if(player.weapon != "basic") {
@@ -107,7 +107,7 @@ class Game {
                         if(temp != "basic") this.obtainables.push(new Obtainable(player.x, player.y, 0, {type:"weapon", content:temp}));
                         player.requestPickup = false;
                     } else if(obtainable.content.type == "ammunition") {
-                        player.ammunition[obtainable.content.content] += obtainable.content.amount;
+                        player.ammunition.magazine[obtainable.content.content] += obtainable.content.amount;
                         obtainablesToRemove.push(obtainable);
                         player.requestPickup = false;
                     } else if(obtainable.content.type == "consumable") {

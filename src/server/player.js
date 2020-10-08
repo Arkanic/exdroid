@@ -3,6 +3,8 @@ const Bullet = require("./bullet");
 const constants = require("../shared/constants");
 const weaponTypes = require("../shared/ctype/weapons");
 
+const AmmunitionRack = require("./ammorack");
+
 class Player extends ObjectClass {
     constructor(id, username, x, y) {
         super(id, x, y, Math.random() * 2 * Math.PI, constants.PLAYER_SPEED);
@@ -15,7 +17,7 @@ class Player extends ObjectClass {
         this.requestPickup = false;
 
         this.weapon = "basic";
-        this.ammunition = {"T108":0,"AP102":0,"B89":0};
+        this.ammunition = new AmmunitionRack();
     }
 
     update(dt) {
@@ -27,10 +29,10 @@ class Player extends ObjectClass {
         
         if(this.fireCooldown > 0) {
             this.fireCooldown -= dt*10;
-        } else if(this.isFiring && this.ammunition[weaponTypes[this.weapon].meta.ammunition] >= weaponTypes[this.weapon].meta.reductcount) {
+        } else if(this.isFiring && this.ammunition.magazine[weaponTypes[this.weapon].meta.ammunition] >= weaponTypes[this.weapon].meta.reductcount) {
             this.fireCooldown += weaponTypes[this.weapon].meta.cooldown;
             let bullets = weaponTypes[this.weapon].fire(this.id, this.x, this.y, this.direction);
-            this.ammunition[weaponTypes[this.weapon].meta.ammunition] -= weaponTypes[this.weapon].meta.reductcount;
+            this.ammunition.magazine[weaponTypes[this.weapon].meta.ammunition] -= weaponTypes[this.weapon].meta.reductcount;
             return bullets;
         }
         return null;
@@ -54,7 +56,7 @@ class Player extends ObjectClass {
             hp: this.hp,
             username: this.username,
             weapon: this.weapon,
-            ammunition: this.ammunition,
+            ammunition: this.ammunition.serialize(),
         };
     }
 }
