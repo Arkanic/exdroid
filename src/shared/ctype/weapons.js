@@ -4,6 +4,7 @@ const Bullet = require("../../server/bullet");
 
 const weapons = Object.freeze({
     basic: {
+        name: "Basic",
         fire: (id, x, y, dir) => {
             return [
                 new Bullet(id, x, y, dir, weapons.basic.meta)
@@ -21,6 +22,7 @@ const weapons = Object.freeze({
         }
     },
     shotgun: {
+        name: "Shotgun",
         fire: (id, x, y, dir) => {
             let bullets = [];
             for(let i = 0; i < 50; i++) {
@@ -40,6 +42,7 @@ const weapons = Object.freeze({
         }
     },
     rotary: {
+        name: "Rotary",
         fire: (id, x, y, dir) => {
             return [new Bullet(id, x, y, dir + (Math.PI / 180)*(Math.random()*4-2), weapons.rotary.meta)];
         },
@@ -55,6 +58,7 @@ const weapons = Object.freeze({
         }
     },
     sniper: {
+        name: "Sniper",
         fire: (id, x, y, dir) => {
             return [new Bullet(id, x, y, dir, weapons.sniper.meta)];
         },
@@ -70,6 +74,7 @@ const weapons = Object.freeze({
         }
     },
     repeater: {
+        name: "Repeater",
         fire: (id, x, y, dir) => {
             return [
                 new Bullet(id, x, y, dir+(Math.PI / 180)*(Math.random()*4-2), weapons.repeater.meta),
