@@ -56,7 +56,8 @@ class Player extends ObjectClass {
             hp: this.hp,
             username: this.username,
             weapon: this.weapon,
-            ammunition: this.ammunition.serialize(),
+            fireCooldown: this.fireCooldown,
+            ammunition: this.ammunition.serialize()
         };
     }
 }
